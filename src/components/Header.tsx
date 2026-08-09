@@ -1,5 +1,5 @@
 import logo from '@/assets/heat-company-logo.webp'
-import { TOTAL_STEPS } from '@/types/quiz'
+import { DISPLAY_TOTAL_STEPS, STEP_DISPLAY_MAP } from '@/types/quiz'
 
 interface HeaderProps {
   step: number
@@ -7,7 +7,8 @@ interface HeaderProps {
 }
 
 export function Header({ step, onBack }: HeaderProps) {
-  const percent = Math.round((step / TOTAL_STEPS) * 100)
+  const displayStep = STEP_DISPLAY_MAP[step] ?? step
+  const percent = Math.round((displayStep / DISPLAY_TOTAL_STEPS) * 100)
 
   return (
     <header className="fixed top-0 left-0 right-0 z-40 bg-background/95 backdrop-blur border-b border-border">
@@ -15,7 +16,7 @@ export function Header({ step, onBack }: HeaderProps) {
         <img src={logo} alt="Heat Company" className="h-8 w-auto sm:h-9" />
         <div className="text-right">
           <span className="block text-xs font-semibold tracking-wider text-foreground">
-            Etapa {step}/{TOTAL_STEPS}
+            Etapa {displayStep}/{DISPLAY_TOTAL_STEPS}
           </span>
           <span className="block text-[11px] text-muted-2">{percent}%</span>
         </div>
