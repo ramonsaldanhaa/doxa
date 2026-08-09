@@ -1,6 +1,6 @@
 # Heat Company — Funil de Análise
 
-Funil de quiz em 6 etapas para captação de leads, com a marca Heat Company.
+Funil de quiz em 9 etapas para captação de leads, com a marca Heat Company.
 
 ## Stack
 
@@ -21,12 +21,16 @@ npm run dev
 2. **Nome + perfil** — captura nome e segmento do lead, revela dado de mercado
 3. **Comparação** — desafio "qual vídeo foi feito por IA" com reveal
 4. **Captura de lead** — WhatsApp, e-mail e Instagram
-5. **Loading** — simula geração da análise personalizada
-6. **Resultado + oferta** — diagnóstico personalizado e CTA final
+5. **Objeção** — pergunta de qualificação (o que impede o lead de se posicionar)
+6. **Diagnóstico** — comparação "o que você faz vs. o que a Heat Company faz" + prova social
+7. **Motivação** — pergunta de qualificação (o que mudaria com mais posicionamento)
+8. **Resultados** — benefícios + cases de clientes (placeholders)
+9. **Confirmação final** — "aplicação recebida" + indicador de potencial de resultado
 
 ## Pendências antes de publicar
 
-- [ ] Trocar o link de CTA final (`src/components/steps/Step6Result.tsx`) pelo WhatsApp/Calendly real
-- [ ] Substituir os `VideoPlaceholder` pelos vídeos reais (hook e comparação)
+- [ ] Trocar o link de CTA final (`src/components/steps/Step6Diagnosis.tsx` e `Step8Results.tsx`) pelo WhatsApp/Calendly real
+- [ ] Substituir os `VideoPlaceholder` pelos vídeos reais da Heat Company (hero, comparação e diagnóstico)
+- [ ] Substituir os `TestimonialCard` em `Step8Results.tsx` por clientes reais da Heat Company (nome, foto e métricas, **com autorização deles**) — hoje são placeholders genéricos de propósito
 - [ ] Conectar o formulário da Etapa 4 a um webhook/CRM real
 - [ ] Revisar copy final com o time antes de ativar tráfego pago

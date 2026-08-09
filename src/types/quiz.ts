@@ -7,6 +7,8 @@ export interface QuizData {
   whatsapp: string
   email: string
   instagram: string
+  objection: string | null
+  motivation: string | null
 }
 
 export const initialQuizData: QuizData = {
@@ -16,6 +18,8 @@ export const initialQuizData: QuizData = {
   whatsapp: '',
   email: '',
   instagram: '',
+  objection: null,
+  motivation: null,
 }
 
-export const TOTAL_STEPS = 6
+export const TOTAL_STEPS = 9

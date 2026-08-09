@@ -5,9 +5,12 @@ import { Step1Hero } from '@/components/steps/Step1Hero'
 import { Step2Profile } from '@/components/steps/Step2Profile'
 import { Step3Comparison } from '@/components/steps/Step3Comparison'
 import { Step4LeadForm } from '@/components/steps/Step4LeadForm'
-import { Step5Loading } from '@/components/steps/Step5Loading'
-import { Step6Result } from '@/components/steps/Step6Result'
-import { initialQuizData, type QuizData } from '@/types/quiz'
+import { Step5Objection } from '@/components/steps/Step5Objection'
+import { Step6Diagnosis } from '@/components/steps/Step6Diagnosis'
+import { Step7Motivation } from '@/components/steps/Step7Motivation'
+import { Step8Results } from '@/components/steps/Step8Results'
+import { Step9Final } from '@/components/steps/Step9Final'
+import { TOTAL_STEPS, initialQuizData, type QuizData } from '@/types/quiz'
 
 function App() {
   const [step, setStep] = useState(1)
@@ -18,16 +21,21 @@ function App() {
   }
 
   function next() {
-    setStep((s) => Math.min(s + 1, 6))
+    setStep((s) => Math.min(s + 1, TOTAL_STEPS))
   }
 
   function back() {
     setStep((s) => Math.max(s - 1, 1))
   }
 
+  function selectAndAdvance(patch: Partial<QuizData>) {
+    updateData(patch)
+    setTimeout(next, 250)
+  }
+
   return (
     <div className="min-h-svh bg-background">
-      <Header step={step} onBack={step > 1 && step < 6 ? back : undefined} />
+      <Header step={step} onBack={step > 1 && step < TOTAL_STEPS ? back : undefined} />
       <main className="flex min-h-svh flex-col justify-center pb-16 pt-28 sm:pt-32">
         <AnimatePresence mode="wait">
           {step === 1 && <Step1Hero key="step1" onNext={next} />}
@@ -52,8 +60,21 @@ function App() {
               name={data.name}
             />
           )}
-          {step === 5 && <Step5Loading key="step5" onDone={next} name={data.name} />}
-          {step === 6 && <Step6Result key="step6" name={data.name} profile={data.profile} />}
+          {step === 5 && (
+            <Step5Objection
+              key="step5"
+              onSelect={(objection) => selectAndAdvance({ objection })}
+            />
+          )}
+          {step === 6 && <Step6Diagnosis key="step6" onNext={next} />}
+          {step === 7 && (
+            <Step7Motivation
+              key="step7"
+              onSelect={(motivation) => selectAndAdvance({ motivation })}
+            />
+          )}
+          {step === 8 && <Step8Results key="step8" onNext={next} />}
+          {step === 9 && <Step9Final key="step9" name={data.name} />}
         </AnimatePresence>
       </main>
     </div>
