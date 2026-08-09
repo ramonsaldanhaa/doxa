@@ -1,3 +1,4 @@
+import { ChevronDown } from 'lucide-react'
 import { Button } from '@/components/Button'
 import { motion } from 'framer-motion'
 import type { QuizData } from '@/types/quiz'
@@ -9,9 +10,14 @@ interface Step4LeadFormProps {
   name: string
 }
 
+const revenueOptions = ['Até 50k', 'De 50k a 200k', 'Mais de 200k', 'Ainda não faturo']
+
 export function Step4LeadForm({ data, onUpdate, onNext, name }: Step4LeadFormProps) {
   const canContinue =
-    data.whatsapp.trim().length >= 8 && data.email.includes('@') && data.instagram.trim().length > 0
+    data.whatsapp.trim().length >= 8 &&
+    data.email.includes('@') &&
+    data.instagram.trim().length > 0 &&
+    Boolean(data.revenue)
 
   return (
     <motion.section
@@ -64,6 +70,28 @@ export function Step4LeadForm({ data, onUpdate, onNext, name }: Step4LeadFormPro
             placeholder="@seuusuario"
             className="w-full rounded-xl border border-border bg-card px-4 py-4 text-base outline-none placeholder:text-muted-2 focus:border-primary"
           />
+        </div>
+        <div>
+          <label className="mb-1.5 block text-sm font-semibold text-foreground">
+            Faturamento atual do seu negócio
+          </label>
+          <div className="relative">
+            <select
+              value={data.revenue ?? ''}
+              onChange={(e) => onUpdate({ revenue: e.target.value || null })}
+              className="w-full appearance-none rounded-xl border border-border bg-card px-4 py-4 text-base text-foreground outline-none focus:border-primary"
+            >
+              <option value="" disabled className="text-muted-2">
+                Selecione uma faixa
+              </option>
+              {revenueOptions.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+            <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-2" />
+          </div>
         </div>
       </div>
 

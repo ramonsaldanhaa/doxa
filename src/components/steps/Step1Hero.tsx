@@ -31,8 +31,9 @@ export function Step1Hero({ onNext }: Step1HeroProps) {
         vídeo feito 100% por IA.
       </p>
 
-      <div className="mt-2 w-full max-w-[160px] sm:mt-8 sm:max-w-xs">
-        <VideoPlayer src="/videos/hero.mp4" className="max-h-[22dvh] w-auto sm:max-h-none sm:w-full" />
+      {/* Largura fixa (não dvh) — dvh tem suporte instável em navegadores in-app como o do WhatsApp */}
+      <div className="mt-2 w-[34vw] max-w-[130px] sm:mt-8 sm:w-full sm:max-w-xs">
+        <VideoPlayer src="/videos/hero.mp4" />
       </div>
 
       <div className="mt-2 grid w-full max-w-xs grid-cols-3 gap-2 rounded-xl border border-border bg-card p-2 sm:mt-6 sm:gap-3 sm:p-4">
@@ -47,17 +48,17 @@ export function Step1Hero({ onNext }: Step1HeroProps) {
         ))}
       </div>
 
-      <div className="mt-2 w-full max-w-xs sm:mt-6">
+      <p className="mt-2 max-w-md text-[11px] text-muted-2 sm:mt-4 sm:text-sm">
+        Este vídeo foi criado pela IA com base no que estava performando nesse nicho: assunto,
+        gancho, roteiro, avatar e edição.
+      </p>
+
+      <div className="mt-3 w-full max-w-xs sm:mt-6">
         <Button onClick={onNext} className="py-2.5 text-sm sm:py-4 sm:text-base">
           Começar análise do meu perfil →
         </Button>
         <p className="mt-1.5 text-[10px] text-muted-2 sm:mt-3 sm:text-xs">Leva menos de 2 minutos.</p>
       </div>
-
-      <p className="mt-3 max-w-md text-[11px] text-muted-2 sm:mt-6 sm:text-sm">
-        Este vídeo foi criado pela IA com base no que estava performando nesse nicho: assunto,
-        gancho, roteiro, avatar e edição.
-      </p>
     </motion.section>
   )
 }

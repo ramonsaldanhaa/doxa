@@ -4,7 +4,6 @@ import { cn } from '@/lib/utils'
 import { Header } from '@/components/Header'
 import { Step1Hero } from '@/components/steps/Step1Hero'
 import { Step2Profile } from '@/components/steps/Step2Profile'
-import { Step2bRevenue } from '@/components/steps/Step2bRevenue'
 import { Step3Comparison } from '@/components/steps/Step3Comparison'
 import { Step4LeadForm } from '@/components/steps/Step4LeadForm'
 import { Step5Objection } from '@/components/steps/Step5Objection'
@@ -52,10 +51,16 @@ function App() {
             <Step2Profile key="step2" data={data} onUpdate={updateData} onNext={next} />
           )}
           {step === 3 && (
-            <Step2bRevenue key="step3" onSelect={(revenue) => selectAndAdvance({ revenue })} />
+            <Step3Comparison
+              key="step3"
+              data={data}
+              onUpdate={updateData}
+              onNext={next}
+              name={data.name}
+            />
           )}
           {step === 4 && (
-            <Step3Comparison
+            <Step4LeadForm
               key="step4"
               data={data}
               onUpdate={updateData}
@@ -64,29 +69,20 @@ function App() {
             />
           )}
           {step === 5 && (
-            <Step4LeadForm
-              key="step5"
-              data={data}
-              onUpdate={updateData}
-              onNext={next}
-              name={data.name}
-            />
-          )}
-          {step === 6 && (
             <Step5Objection
-              key="step6"
+              key="step5"
               onSelect={(objection) => selectAndAdvance({ objection })}
             />
           )}
-          {step === 7 && <Step6Diagnosis key="step7" onNext={next} />}
-          {step === 8 && (
+          {step === 6 && <Step6Diagnosis key="step6" onNext={next} />}
+          {step === 7 && (
             <Step7Motivation
-              key="step8"
+              key="step7"
               onSelect={(motivation) => selectAndAdvance({ motivation })}
             />
           )}
-          {step === 9 && <Step8Results key="step9" onNext={next} />}
-          {step === 10 && <Step9Final key="step10" name={data.name} />}
+          {step === 8 && <Step8Results key="step8" onNext={next} />}
+          {step === 9 && <Step9Final key="step9" name={data.name} />}
         </AnimatePresence>
       </main>
     </div>
