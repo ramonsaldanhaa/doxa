@@ -10,7 +10,13 @@ interface Step4LeadFormProps {
   name: string
 }
 
-const revenueOptions = ['Até 50k', 'De 50k a 200k', 'Mais de 200k', 'Ainda não faturo']
+const revenueOptions = [
+  'Começando agora',
+  'De 10k a 30k',
+  'De 30 a 50k',
+  'De 50 a 100k',
+  'Mais de 100k',
+]
 
 export function Step4LeadForm({ data, onUpdate, onNext, name }: Step4LeadFormProps) {
   const canContinue =
