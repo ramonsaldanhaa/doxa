@@ -12,6 +12,44 @@ interface Step2ProfileProps {
 
 const profiles: Profile[] = ['Médico', 'Advogado', 'Mentor ou especialista', 'Empresário', 'Outro']
 
+interface MarketInsight {
+  stat: string
+  lead: string
+  detail: string
+  source: string
+}
+
+const marketInsights: Partial<Record<Profile, MarketInsight>> = {
+  Médico: {
+    stat: '83%',
+    lead: 'dos pacientes pesquisam o profissional na internet antes de marcar consulta',
+    detail:
+      'Médicos com presença digital ativa relatam agenda mais previsível e menos dependência de convênio — o paciente chega já confiando, o que encurta a consulta e aumenta o valor percebido.',
+    source: 'Software Advice / Capterra — Patient Reviews Survey',
+  },
+  Advogado: {
+    stat: '1 em cada 3',
+    lead: 'clientes escolhe o advogado pelo conteúdo que viu antes de qualquer indicação',
+    detail:
+      'Escritórios que publicam com constância recebem leads mais qualificados e conseguem cobrar honorários acima da média por serem vistos como especialistas, não como opção genérica.',
+    source: 'American Bar Association — Legal Technology Survey Report',
+  },
+  'Mentor ou especialista': {
+    stat: '5x',
+    lead: 'mais conversão para especialistas reconhecidos como autoridade no tema',
+    detail:
+      'Quem posiciona conhecimento em vídeo vende com menos reuniões: a audiência já entendeu o método antes da conversa, o que reduz o ciclo de venda e aumenta o ticket.',
+    source: 'Edelman–LinkedIn B2B Thought Leadership Impact Report',
+  },
+  Empresário: {
+    stat: '60%',
+    lead: 'da decisão de compra acontece antes do primeiro contato comercial',
+    detail:
+      'Empresas cujo fundador aparece e comunica geram mais confiança, atraem talentos e fecham negócios com menos esforço de prospecção ativa.',
+    source: 'Gartner — B2B Buying Journey',
+  },
+}
+
 export function Step2Profile({ data, onUpdate, onNext }: Step2ProfileProps) {
   const [showInsight, setShowInsight] = useState(Boolean(data.profile))
 
@@ -20,7 +58,13 @@ export function Step2Profile({ data, onUpdate, onNext }: Step2ProfileProps) {
     setShowInsight(true)
   }
 
-  const canContinue = data.name.trim().length > 0 && Boolean(data.profile)
+  const insight = data.profile ? marketInsights[data.profile] : undefined
+  const isOther = data.profile === 'Outro'
+
+  const canContinue =
+    data.name.trim().length > 0 &&
+    Boolean(data.profile) &&
+    (!isOther || data.otherProfession.trim().length > 0)
 
   return (
     <motion.section
@@ -73,7 +117,26 @@ export function Step2Profile({ data, onUpdate, onNext }: Step2ProfileProps) {
       </div>
 
       <AnimatePresence>
-        {showInsight && (
+        {showInsight && isOther && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="mt-6 overflow-hidden"
+          >
+            <label className="mb-1.5 block text-sm font-semibold text-foreground">
+              Qual é a sua área de atuação?
+            </label>
+            <input
+              value={data.otherProfession}
+              onChange={(e) => onUpdate({ otherProfession: e.target.value })}
+              placeholder="Ex.: nutricionista, arquiteto, consultor..."
+              className="w-full rounded-xl border border-border bg-card px-4 py-4 text-base text-foreground outline-none placeholder:text-muted-2 focus:border-primary"
+            />
+          </motion.div>
+        )}
+
+        {showInsight && insight && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
@@ -84,16 +147,11 @@ export function Step2Profile({ data, onUpdate, onNext }: Step2ProfileProps) {
               <p className="text-xs font-bold uppercase tracking-wider text-primary">
                 Dado do seu mercado
               </p>
-              <p className="mt-2 text-3xl font-extrabold">60%</p>
-              <p className="mt-1 text-sm text-muted">
-                da decisão de compra acontece antes do primeiro contato comercial.
-              </p>
-              <p className="mt-3 text-sm text-muted-2">
-                Marcas cujo fundador aparece e comunica geram mais confiança, atraem talentos e
-                fecham negócios com menos esforço de prospecção ativa.
-              </p>
+              <p className="mt-2 text-3xl font-extrabold">{insight.stat}</p>
+              <p className="mt-1 text-sm text-muted">{insight.lead}</p>
+              <p className="mt-3 text-sm text-muted-2">{insight.detail}</p>
               <p className="mt-3 text-[11px] uppercase tracking-wide text-muted-2">
-                Fonte: Gartner — B2B Buying Journey
+                Fonte: {insight.source}
               </p>
             </div>
           </motion.div>

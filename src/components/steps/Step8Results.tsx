@@ -21,35 +21,39 @@ const benefits = [
 const testimonials = [
   {
     initials: 'CA',
-    label: 'Cliente A',
+    name: 'Cliente A',
     category: 'Médico',
-    metric1: { label: 'Visualizações', value: '—' },
-    metric2: { label: 'Seguidores', value: '—' },
-    result: { label: 'Resultado', value: '—' },
+    views: '—',
+    followers: '—',
+    resultValue: '—',
+    resultDetail: '',
   },
   {
     initials: 'CB',
-    label: 'Cliente B',
+    name: 'Cliente B',
     category: 'Mentor',
-    metric1: { label: 'Visualizações', value: '—' },
-    metric2: { label: 'Seguidores', value: '—' },
-    result: { label: 'Resultado', value: '—' },
+    views: '—',
+    followers: '—',
+    resultValue: '—',
+    resultDetail: '',
   },
   {
     initials: 'CC',
-    label: 'Cliente C',
+    name: 'Cliente C',
     category: 'Advogado',
-    metric1: { label: 'Visualizações', value: '—' },
-    metric2: { label: 'Seguidores', value: '—' },
-    result: { label: 'Resultado', value: '—' },
+    views: '—',
+    followers: '—',
+    resultValue: '—',
+    resultDetail: '',
   },
   {
     initials: 'CD',
-    label: 'Cliente D',
+    name: 'Cliente D',
     category: 'Empresário',
-    metric1: { label: 'Visualizações', value: '—' },
-    metric2: { label: 'Seguidores', value: '—' },
-    result: { label: 'Resultado', value: '—' },
+    views: '—',
+    followers: '—',
+    resultValue: '—',
+    resultDetail: '',
   },
 ]
 
@@ -89,7 +93,7 @@ export function Step8Results({ onNext }: Step8ResultsProps) {
 
       <div className="mt-6 flex flex-col gap-4">
         {testimonials.map((t) => (
-          <TestimonialCard key={t.label} {...t} />
+          <TestimonialCard key={t.name} {...t} />
         ))}
       </div>
 

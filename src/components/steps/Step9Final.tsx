@@ -24,8 +24,8 @@ export function Step9Final({ name }: Step9FinalProps) {
         Um especialista da Heat Company entrará em contato pelo seu WhatsApp.
       </p>
 
-      <div className="mt-6 rounded-xl border border-primary/30 bg-primary/5 p-6">
-        <p className="text-3xl font-extrabold text-primary">62% a mais</p>
+      <div className="mt-6 rounded-xl border border-green-500/30 bg-green-500/5 p-6">
+        <p className="text-3xl font-extrabold text-green-400">62% a mais</p>
         <p className="mt-2 text-sm font-semibold text-foreground">
           é o potencial de aumento em alcance e vendas, sem investir em tráfego pago, para quem
           transforma posicionamento em conteúdo constante.

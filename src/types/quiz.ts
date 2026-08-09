@@ -9,6 +9,7 @@ export interface QuizData {
   instagram: string
   objection: string | null
   motivation: string | null
+  otherProfession: string
 }
 
 export const initialQuizData: QuizData = {
@@ -20,6 +21,7 @@ export const initialQuizData: QuizData = {
   instagram: '',
   objection: null,
   motivation: null,
+  otherProfession: '',
 }
 
 export const TOTAL_STEPS = 9

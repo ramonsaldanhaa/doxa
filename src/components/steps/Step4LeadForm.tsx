@@ -29,27 +29,42 @@ export function Step4LeadForm({ data, onUpdate, onNext, name }: Step4LeadFormPro
         para analisarmos como a Heat Company pode aplicar essa tecnologia ao seu perfil.
       </p>
 
-      <div className="mt-6 flex flex-col gap-3">
-        <input
-          value={data.whatsapp}
-          onChange={(e) => onUpdate({ whatsapp: e.target.value })}
-          placeholder="Seu melhor WhatsApp"
-          inputMode="tel"
-          className="w-full rounded-xl border border-border bg-card px-4 py-4 text-base outline-none placeholder:text-muted-2 focus:border-primary"
-        />
-        <input
-          value={data.email}
-          onChange={(e) => onUpdate({ email: e.target.value })}
-          placeholder="Seu melhor e-mail"
-          type="email"
-          className="w-full rounded-xl border border-border bg-card px-4 py-4 text-base outline-none placeholder:text-muted-2 focus:border-primary"
-        />
-        <input
-          value={data.instagram}
-          onChange={(e) => onUpdate({ instagram: e.target.value })}
-          placeholder="Qual é o seu Instagram?"
-          className="w-full rounded-xl border border-border bg-card px-4 py-4 text-base outline-none placeholder:text-muted-2 focus:border-primary"
-        />
+      <div className="mt-6 flex flex-col gap-4">
+        <div>
+          <label className="mb-1.5 block text-sm font-semibold text-foreground">
+            Seu melhor WhatsApp
+          </label>
+          <input
+            value={data.whatsapp}
+            onChange={(e) => onUpdate({ whatsapp: e.target.value })}
+            placeholder="(00) 00000-0000"
+            inputMode="tel"
+            className="w-full rounded-xl border border-border bg-card px-4 py-4 text-base outline-none placeholder:text-muted-2 focus:border-primary"
+          />
+        </div>
+        <div>
+          <label className="mb-1.5 block text-sm font-semibold text-foreground">
+            Seu melhor e-mail
+          </label>
+          <input
+            value={data.email}
+            onChange={(e) => onUpdate({ email: e.target.value })}
+            placeholder="voce@email.com"
+            type="email"
+            className="w-full rounded-xl border border-border bg-card px-4 py-4 text-base outline-none placeholder:text-muted-2 focus:border-primary"
+          />
+        </div>
+        <div>
+          <label className="mb-1.5 block text-sm font-semibold text-foreground">
+            Qual é o seu Instagram?
+          </label>
+          <input
+            value={data.instagram}
+            onChange={(e) => onUpdate({ instagram: e.target.value })}
+            placeholder="@seuusuario"
+            className="w-full rounded-xl border border-border bg-card px-4 py-4 text-base outline-none placeholder:text-muted-2 focus:border-primary"
+          />
+        </div>
       </div>
 
       <div className="mt-8">
