@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Eye, Heart, MessageCircle } from 'lucide-react'
 import { Button } from '@/components/Button'
-import { VideoPlaceholder } from '@/components/VideoPlaceholder'
+import { VideoPlayer } from '@/components/VideoPlayer'
 
 interface Step1HeroProps {
   onNext: () => void
@@ -22,20 +22,25 @@ export function Step1Hero({ onNext }: Step1HeroProps) {
       transition={{ duration: 0.35 }}
       className="mx-auto flex max-w-2xl flex-col items-center px-4 text-center"
     >
-      <h1 className="text-3xl font-extrabold uppercase leading-tight tracking-tight sm:text-5xl">
+      <h1 className="text-xl font-extrabold uppercase leading-tight tracking-tight sm:text-5xl">
         Viralize para o público <span className="text-primary">certo</span> sem gravar um único
         vídeo.
       </h1>
-      <p className="mt-5 max-w-xl text-base text-muted sm:text-lg">
+      <p className="mt-2 max-w-xl text-xs text-muted sm:mt-5 sm:text-lg">
         A IA da Heat Company transforma sua imagem e voz em vídeos prontos para viralizar. Veja um
         vídeo feito 100% por IA.
       </p>
 
-      <div className="mt-8 w-full max-w-xs">
-        <VideoPlaceholder label="Vídeo gerado por IA — Heat Company" />
+      <div className="mt-3 w-full max-w-[220px] sm:mt-8 sm:max-w-xs">
+        <VideoPlayer src="/videos/hero.mp4" className="max-h-[42dvh] w-auto sm:max-h-none sm:w-full" />
       </div>
 
-      <div className="mt-6 grid w-full max-w-xs grid-cols-3 gap-3 rounded-xl border border-border bg-card p-4">
+      <div className="mt-3 w-full max-w-xs sm:mt-8">
+        <Button onClick={onNext}>Começar análise do meu perfil →</Button>
+        <p className="mt-2 text-[11px] text-muted-2 sm:mt-3 sm:text-xs">Leva menos de 2 minutos.</p>
+      </div>
+
+      <div className="mt-5 grid w-full max-w-xs grid-cols-3 gap-3 rounded-xl border border-border bg-card p-4 sm:mt-6">
         {stats.map(({ icon: Icon, value, label }) => (
           <div key={label} className="flex flex-col items-center gap-1">
             <Icon className="h-4 w-4 text-primary" />
@@ -45,15 +50,10 @@ export function Step1Hero({ onNext }: Step1HeroProps) {
         ))}
       </div>
 
-      <p className="mt-6 max-w-md text-sm text-muted-2">
+      <p className="mt-5 max-w-md text-xs text-muted-2 sm:mt-6 sm:text-sm">
         Este vídeo foi criado pela IA com base no que estava performando nesse nicho: assunto,
         gancho, roteiro, avatar e edição.
       </p>
-
-      <div className="mt-8 w-full max-w-xs">
-        <Button onClick={onNext}>Começar análise do meu perfil →</Button>
-        <p className="mt-3 text-xs text-muted-2">Leva menos de 2 minutos.</p>
-      </div>
     </motion.section>
   )
 }

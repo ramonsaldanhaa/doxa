@@ -36,7 +36,7 @@ function App() {
   return (
     <div className="min-h-svh bg-background">
       <Header step={step} onBack={step > 1 && step < TOTAL_STEPS ? back : undefined} />
-      <main className="flex min-h-svh flex-col justify-center pb-16 pt-28 sm:pt-32">
+      <main className="flex flex-col pb-16 pt-20 sm:min-h-svh sm:justify-center sm:pt-32">
         <AnimatePresence mode="wait">
           {step === 1 && <Step1Hero key="step1" onNext={next} />}
           {step === 2 && (

@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { Sparkles } from 'lucide-react'
 import { Button } from '@/components/Button'
-import { VideoPlaceholder } from '@/components/VideoPlaceholder'
+import { VideoPlayer } from '@/components/VideoPlayer'
 import { cn } from '@/lib/utils'
 import type { QuizData } from '@/types/quiz'
 
@@ -11,6 +11,11 @@ interface Step3ComparisonProps {
   onNext: () => void
   name: string
 }
+
+const videos = {
+  1: '/videos/comparison-1.mp4',
+  2: '/videos/comparison-2.mp4',
+} as const
 
 export function Step3Comparison({ data, onUpdate, onNext, name }: Step3ComparisonProps) {
   const answered = data.comparisonAnswer !== null
@@ -40,19 +45,22 @@ export function Step3Comparison({ data, onUpdate, onNext, name }: Step3Compariso
 
       <div className="mt-6 grid grid-cols-2 gap-4">
         {([1, 2] as const).map((n) => (
-          <button
+          <div
             key={n}
+            role="button"
+            tabIndex={0}
             onClick={() => onUpdate({ comparisonAnswer: n })}
+            onKeyDown={(e) => e.key === 'Enter' && onUpdate({ comparisonAnswer: n })}
             className={cn(
-              'rounded-2xl border-2 p-1.5 text-left transition-colors',
+              'cursor-pointer rounded-2xl border-2 p-1.5 text-left transition-colors',
               data.comparisonAnswer === n ? 'border-primary' : 'border-transparent',
             )}
           >
-            <VideoPlaceholder label={`Vídeo ${n}`} />
+            <VideoPlayer src={videos[n]} />
             <span className="mt-2 block text-center text-sm font-semibold">
               Escolher vídeo {n}
             </span>
-          </button>
+          </div>
         ))}
       </div>
 
