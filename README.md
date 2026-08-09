@@ -32,6 +32,6 @@ npm run dev
 - [ ] Trocar o link de CTA final (`src/components/steps/Step6Diagnosis.tsx` e `Step8Results.tsx`) pelo WhatsApp/Calendly real
 - [x] Vídeos da Hero e da Comparação (Etapas 1 e 3) já são reais (`public/videos/`)
 - [ ] Substituir os 3 `VideoPlaceholder` da Etapa 6 (diagnóstico) pelos vídeos reais de clientes
-- [ ] Substituir os `TestimonialCard` em `Step8Results.tsx` por clientes reais da Heat Company (nome, foto e métricas, **com autorização deles**) — hoje são placeholders genéricos de propósito
+- [x] Cards de resultados da Etapa 8 usam os 4 cases reais da Heat Company (HR Náutica, Moodi, Core Alquimias, Marcio Escanhoela), com fotos extraídas de `Cases Heat.pdf` (licenciadas) — ver `public/testimonials/`
 - [ ] Conectar o formulário da Etapa 4 a um webhook/CRM real
 - [ ] Revisar copy final com o time antes de ativar tráfego pago

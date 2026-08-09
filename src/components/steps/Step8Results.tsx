@@ -15,45 +15,52 @@ const benefits = [
 ]
 
 /**
- * Placeholders — substituir pelos clientes reais da Heat Company (nome, foto
- * e métricas verificadas, com autorização deles) antes de publicar.
+ * Cases reais da Heat Company, extraídos de "Cases Heat.pdf" (fotos licenciadas).
  */
 const testimonials = [
   {
+    initials: 'HN',
+    name: 'HR Náutica',
+    handle: '@hr.nautica',
+    category: 'Náutica',
+    views: '603 mil',
+    followers: '14,3 mil',
+    resultValue: '+2M',
+    resultDetail: 'views no setor náutico',
+    avatarUrl: '/testimonials/hr-nautica.png',
+  },
+  {
+    initials: 'MO',
+    name: 'Moodi',
+    handle: '@moodioficial',
+    category: 'Imobiliário',
+    views: '7,4 mi',
+    followers: '7.893',
+    resultValue: '+7M',
+    resultDetail: 'views com 1 único vídeo',
+    avatarUrl: '/testimonials/moodi.png',
+  },
+  {
     initials: 'CA',
-    name: 'Cliente A',
-    category: 'Médico',
-    views: '—',
-    followers: '—',
-    resultValue: '—',
-    resultDetail: '',
+    name: 'Core Alquimias',
+    handle: '@corealquimias',
+    category: 'Loja Esotérica',
+    views: '3,8 mi',
+    followers: '207 mil',
+    resultValue: '+12M',
+    resultDetail: 'de views no total',
+    avatarUrl: '/testimonials/core-alquimias.png',
   },
   {
-    initials: 'CB',
-    name: 'Cliente B',
-    category: 'Mentor',
-    views: '—',
-    followers: '—',
-    resultValue: '—',
-    resultDetail: '',
-  },
-  {
-    initials: 'CC',
-    name: 'Cliente C',
+    initials: 'ME',
+    name: 'Marcio Escanhoela',
+    handle: '@m.escanhoela',
     category: 'Advogado',
-    views: '—',
-    followers: '—',
-    resultValue: '—',
-    resultDetail: '',
-  },
-  {
-    initials: 'CD',
-    name: 'Cliente D',
-    category: 'Empresário',
-    views: '—',
-    followers: '—',
-    resultValue: '—',
-    resultDetail: '',
+    views: '854 mil',
+    followers: '3.354',
+    resultValue: '+1,5M',
+    resultDetail: 'views em 3 vídeos',
+    avatarUrl: '/testimonials/marcio-escanhoela.png',
   },
 ]
 
