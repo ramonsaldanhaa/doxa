@@ -11,7 +11,7 @@ export function Header({ step, onBack }: HeaderProps) {
   const percent = Math.round((displayStep / DISPLAY_TOTAL_STEPS) * 100)
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 bg-background/95 backdrop-blur border-b border-border">
+    <header className="sticky top-0 z-40 shrink-0 border-b border-border bg-background/95 backdrop-blur">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 sm:px-6">
         <img src={logo} alt="Heat Company" className="h-8 w-auto sm:h-9" />
         <div className="text-right">

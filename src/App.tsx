@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
-import { cn } from '@/lib/utils'
 import { Header } from '@/components/Header'
 import { Step1Hero } from '@/components/steps/Step1Hero'
 import { Step2Profile } from '@/components/steps/Step2Profile'
@@ -37,14 +36,9 @@ function App() {
   const hasBack = step > 1 && step < TOTAL_STEPS
 
   return (
-    <div className="min-h-svh bg-background">
+    <div className="flex min-h-svh flex-col bg-background">
       <Header step={step} onBack={hasBack ? back : undefined} />
-      <main
-        className={cn(
-          'flex flex-col pb-16 sm:min-h-svh sm:justify-center sm:pt-32',
-          hasBack ? 'pt-28' : 'pt-20',
-        )}
-      >
+      <main className="flex flex-1 flex-col justify-center py-8">
         <AnimatePresence mode="wait">
           {step === 1 && <Step1Hero key="step1" onNext={next} />}
           {step === 2 && (
