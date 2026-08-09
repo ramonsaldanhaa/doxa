@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Camera, Mic, MessageSquareText, Search, PenLine, Clapperboard, Rocket, Zap } from 'lucide-react'
 import { Button } from '@/components/Button'
-import { VideoPlaceholder } from '@/components/VideoPlaceholder'
+import { MediaThumbnail } from '@/components/MediaThumbnail'
 
 interface Step6DiagnosisProps {
   onNext: () => void
@@ -70,9 +70,21 @@ export function Step6Diagnosis({ onNext }: Step6DiagnosisProps) {
       </div>
 
       <div className="mt-4 grid grid-cols-3 gap-3">
-        <VideoPlaceholder label="Cliente A" className="aspect-square" />
-        <VideoPlaceholder label="Cliente B" className="aspect-square" />
-        <VideoPlaceholder label="Cliente C" className="aspect-square" />
+        <MediaThumbnail
+          src="/diagnosis/cliente-a.png"
+          caption="Um bom funcionário"
+          className="aspect-[2/3]"
+        />
+        <MediaThumbnail
+          src="/diagnosis/cliente-b.png"
+          caption="Você sabia que a"
+          className="aspect-[2/3]"
+        />
+        <MediaThumbnail
+          src="/diagnosis/cliente-c.png"
+          caption="Todo mundo conhece"
+          className="aspect-[2/3]"
+        />
       </div>
 
       <div className="mt-4 rounded-xl border border-primary/30 bg-primary/5 p-5 text-center">

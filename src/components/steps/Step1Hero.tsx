@@ -31,18 +31,11 @@ export function Step1Hero({ onNext }: Step1HeroProps) {
         vídeo feito 100% por IA.
       </p>
 
-      <div className="mt-2 w-full max-w-[180px] sm:mt-8 sm:max-w-xs">
-        <VideoPlayer src="/videos/hero.mp4" className="max-h-[28dvh] w-auto sm:max-h-none sm:w-full" />
+      <div className="mt-2 w-full max-w-[160px] sm:mt-8 sm:max-w-xs">
+        <VideoPlayer src="/videos/hero.mp4" className="max-h-[22dvh] w-auto sm:max-h-none sm:w-full" />
       </div>
 
-      <div className="mt-2 w-full max-w-xs sm:mt-8">
-        <Button onClick={onNext} className="py-3 text-sm sm:py-4 sm:text-base">
-          Começar análise do meu perfil →
-        </Button>
-        <p className="mt-1.5 text-[10px] text-muted-2 sm:mt-3 sm:text-xs">Leva menos de 2 minutos.</p>
-      </div>
-
-      <div className="mt-3 grid w-full max-w-xs grid-cols-3 gap-2 rounded-xl border border-border bg-card p-2.5 sm:mt-6 sm:gap-3 sm:p-4">
+      <div className="mt-2 grid w-full max-w-xs grid-cols-3 gap-2 rounded-xl border border-border bg-card p-2 sm:mt-6 sm:gap-3 sm:p-4">
         {stats.map(({ icon: Icon, value, label }) => (
           <div key={label} className="flex flex-col items-center gap-0.5 sm:gap-1">
             <Icon className="h-3.5 w-3.5 text-primary sm:h-4 sm:w-4" />
@@ -52,6 +45,13 @@ export function Step1Hero({ onNext }: Step1HeroProps) {
             </span>
           </div>
         ))}
+      </div>
+
+      <div className="mt-2 w-full max-w-xs sm:mt-6">
+        <Button onClick={onNext} className="py-2.5 text-sm sm:py-4 sm:text-base">
+          Começar análise do meu perfil →
+        </Button>
+        <p className="mt-1.5 text-[10px] text-muted-2 sm:mt-3 sm:text-xs">Leva menos de 2 minutos.</p>
       </div>
 
       <p className="mt-3 max-w-md text-[11px] text-muted-2 sm:mt-6 sm:text-sm">
