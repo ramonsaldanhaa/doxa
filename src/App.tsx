@@ -38,46 +38,51 @@ function App() {
   return (
     <div className="flex min-h-svh flex-col bg-background">
       <Header step={step} onBack={hasBack ? back : undefined} />
-      <main className="flex flex-1 flex-col justify-center py-8">
-        <AnimatePresence mode="wait">
-          {step === 1 && <Step1Hero key="step1" onNext={next} />}
-          {step === 2 && (
-            <Step2Profile key="step2" data={data} onUpdate={updateData} onNext={next} />
-          )}
-          {step === 3 && (
-            <Step3Comparison
-              key="step3"
-              data={data}
-              onUpdate={updateData}
-              onNext={next}
-              name={data.name}
-            />
-          )}
-          {step === 4 && (
-            <Step4LeadForm
-              key="step4"
-              data={data}
-              onUpdate={updateData}
-              onNext={next}
-              name={data.name}
-            />
-          )}
-          {step === 5 && (
-            <Step5Objection
-              key="step5"
-              onSelect={(objection) => selectAndAdvance({ objection })}
-            />
-          )}
-          {step === 6 && <Step6Diagnosis key="step6" onNext={next} />}
-          {step === 7 && (
-            <Step7Motivation
-              key="step7"
-              onSelect={(motivation) => selectAndAdvance({ motivation })}
-            />
-          )}
-          {step === 8 && <Step8Results key="step8" onNext={next} />}
-          {step === 9 && <Step9Final key="step9" name={data.name} />}
-        </AnimatePresence>
+      <main className="flex flex-1 flex-col">
+        {/* margin:auto centraliza quando sobra espaço, mas nunca "estoura" para
+            cima quando o conteúdo é mais alto que a tela (diferente de
+            justify-center, que corta o topo nesse caso) */}
+        <div className="m-auto w-full py-8">
+          <AnimatePresence mode="wait">
+            {step === 1 && <Step1Hero key="step1" onNext={next} />}
+            {step === 2 && (
+              <Step2Profile key="step2" data={data} onUpdate={updateData} onNext={next} />
+            )}
+            {step === 3 && (
+              <Step3Comparison
+                key="step3"
+                data={data}
+                onUpdate={updateData}
+                onNext={next}
+                name={data.name}
+              />
+            )}
+            {step === 4 && (
+              <Step4LeadForm
+                key="step4"
+                data={data}
+                onUpdate={updateData}
+                onNext={next}
+                name={data.name}
+              />
+            )}
+            {step === 5 && (
+              <Step5Objection
+                key="step5"
+                onSelect={(objection) => selectAndAdvance({ objection })}
+              />
+            )}
+            {step === 6 && <Step6Diagnosis key="step6" onNext={next} />}
+            {step === 7 && (
+              <Step7Motivation
+                key="step7"
+                onSelect={(motivation) => selectAndAdvance({ motivation })}
+              />
+            )}
+            {step === 8 && <Step8Results key="step8" onNext={next} />}
+            {step === 9 && <Step9Final key="step9" name={data.name} />}
+          </AnimatePresence>
+        </div>
       </main>
     </div>
   )
